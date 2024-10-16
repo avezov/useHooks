@@ -4,13 +4,11 @@ export function useArray<T>(defaultArr: T[]) {
   const [arr, setArr] = useState<T[]>(defaultArr)
 
   const handleAdd = useCallback((value: T) => {
-    const newArr = [...arr, value]
-    setArr(newArr)
+    setArr(arr => ([...arr, value]))
   }, [arr, setArr])
 
   const handleDel = useCallback((value: T) => {
-    const newArr = [...arr.filter(item => item !== value)]
-    setArr(newArr)
+    setArr(arr => ([...arr.filter(item => item !== value)]))
   }, [arr, setArr])
 
   const handleToggle = useCallback((value: T) => {
