@@ -1,6 +1,6 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-export function useArray<T>(defaultArr: T[]) {
+export function useArray<T>(defaultArr: T[], watchValue = false) {
   const [arr, setArr] = useState<T[]>(defaultArr)
 
   const handleAdd = useCallback((value: T) => {
@@ -19,6 +19,12 @@ export function useArray<T>(defaultArr: T[]) {
       handleAdd(value)
     }
   }, [arr, handleAdd, handleDel])
+
+  useEffect(() => {
+    if (watchValue) {
+      setArr(() => defaultArr)
+    }
+  }, [defaultArr, watchValue])
 
   return {
     value: arr,
