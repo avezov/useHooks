@@ -28,6 +28,14 @@ export function useArray<T>(defaultArr: T[], watchValue = false) {
     }
   }, [handleToggle])
 
+  const inArrayMany = useCallback((values: T[]) => {
+    if (Array.isArray(values)) {
+      return values.every(value => arr.includes(value))
+    }
+
+    return false;
+  }, [arr])
+
   useEffect(() => {
     if (watchValue) {
       setArr(() => defaultArr)
@@ -41,5 +49,6 @@ export function useArray<T>(defaultArr: T[], watchValue = false) {
     del: handleDel,
     toggle: handleToggle,
     toggleMany: handleToggleMany,
+    inArrayMany,
   }
 }
