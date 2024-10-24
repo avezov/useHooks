@@ -20,6 +20,14 @@ export function useArray<T>(defaultArr: T[], watchValue = false) {
     }
   }, [arr, handleAdd, handleDel])
 
+  const handleToggleMany = useCallback((values: T[]) => {
+    if (Array.isArray(values)) {
+      values.forEach(value => {
+        handleToggle(value)
+      })
+    }
+  }, [handleToggle])
+
   useEffect(() => {
     if (watchValue) {
       setArr(() => defaultArr)
