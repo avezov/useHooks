@@ -40,5 +40,6 @@ export function useArray<T>(defaultArr: T[], watchValue = false) {
     add: handleAdd,
     del: handleDel,
     toggle: handleToggle,
+    toggleMany: handleToggleMany,
   }
 }
