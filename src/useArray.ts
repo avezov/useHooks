@@ -29,11 +29,7 @@ export function useArray<T>(defaultArr: T[], watchValue = false) {
   }, [handleToggle])
 
   const inArrayMany = useCallback((values: T[]) => {
-    if (Array.isArray(values)) {
-      return values.every(value => arr.includes(value))
-    }
-
-    return false;
+    return (Array.isArray(values) ? values : [values]).every(value => arr.includes(value))
   }, [arr])
 
   useEffect(() => {
