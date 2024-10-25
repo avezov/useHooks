@@ -7,9 +7,21 @@ export function useArray<T>(defaultArr: T[], watchValue = false) {
     setArr(arr => ([...arr, value]))
   }, [arr, setArr])
 
+  const handleAddMany = useCallback((values: T | T[]) => {
+    (Array.isArray(values) ? values : [values]).forEach(value => {
+      handleAdd(value)
+    })
+  }, [handleAdd])
+
   const handleDel = useCallback((value: T) => {
     setArr(arr => ([...arr.filter(item => item !== value)]))
   }, [arr, setArr])
+
+  const handleDelMany = useCallback((values: T | T[]) => {
+    (Array.isArray(values) ? values : [values]).forEach(value => {
+      handleDel(value)
+    })
+  }, [handleDel])
 
   const handleToggle = useCallback((value: T) => {
     const includes = arr.includes(value)
@@ -42,7 +54,9 @@ export function useArray<T>(defaultArr: T[], watchValue = false) {
     value: arr,
     setValue: setArr,
     add: handleAdd,
+    addMany: handleAddMany,
     del: handleDel,
+    delMany: handleDelMany,
     toggle: handleToggle,
     toggleMany: handleToggleMany,
     inArrayMany,
