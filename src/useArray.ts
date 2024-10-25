@@ -28,7 +28,7 @@ export function useArray<T>(defaultArr: T[], watchValue = false) {
     }
   }, [handleToggle])
 
-  const inArrayMany = useCallback((values: T[]) => {
+  const inArrayMany = useCallback((values: T | T[]) => {
     return (Array.isArray(values) ? values : [values]).every(value => arr.includes(value))
   }, [arr])
 
