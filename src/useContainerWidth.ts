@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { DependencyList, useEffect, useRef, useState } from "react";
 
 /**
  * Определение ширины контейнера
  */
-export function useContainerWidth(deps = []) {
+export function useContainerWidth(deps: DependencyList = []) {
   const ref = useRef<HTMLElement>(null);
   const [width, setWidth] = useState<number>(0);
 
