@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 /**
  * Определение ширины контейнера
  */
-export function useContainerWidth() {
+export function useContainerWidth(deps = []) {
   const ref = useRef<HTMLElement>(null);
   const [width, setWidth] = useState<number>(0);
 
@@ -19,7 +19,7 @@ export function useContainerWidth() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, deps);
 
   return { ref, width };
 }
