@@ -8,7 +8,7 @@ type HotkeyParams = {
   callback: HotkeyCallback
 }
 
-export function useHotkeys(hotkeys: HotkeyParams[], elem?: HTMLElement) {
+export function useHotkeys(hotkeys: HotkeyParams[], elem?: HTMLElement | null) {
   useEffect(() => {
     const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
       hotkeys.forEach(hotkey => {
