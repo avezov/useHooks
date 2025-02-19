@@ -1,6 +1,6 @@
 {
   "name": "@xvii/usehooks",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "my collection of useHooks for react apps",
   "main": "dist/index.js",
   "repository": "https://github.com/avezov/useHooks.git",
